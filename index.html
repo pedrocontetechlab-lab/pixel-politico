@@ -1,167 +1,251 @@
-<!DOCTYPE html><html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
+  <title>Pixel Político</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pixel Político — Black Label</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }body {
-  background: #020617;
-  color: #e5e7eb;
-  overflow-x: hidden;
-}
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
 
-/* FUNDO BLACK LABEL */
-.bg {
-  position: fixed;
-  inset: 0;
-  background:
-    radial-gradient(circle at 15% 20%, rgba(59,130,246,0.12), transparent 45%),
-    radial-gradient(circle at 85% 70%, rgba(30,64,175,0.15), transparent 50%),
-    linear-gradient(180deg, #020617, #000000 70%);
-  animation: bgPulse 40s ease-in-out infinite alternate;
-  z-index: -2;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-@keyframes bgPulse {
-  from { filter: brightness(1) hue-rotate(0deg); }
-  to { filter: brightness(1.05) hue-rotate(18deg); }
-}
+    body {
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(circle at top, #0a0f1f, #000);
+      color: #e0e6f0;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
 
-/* GRÃO CINEMATOGRÁFICO */
-.noise {
-  position: fixed;
-  inset: 0;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4"/></filter><rect width="120" height="120" filter="url(%23n)" opacity="0.035"/></svg>');
-  pointer-events: none;
-  z-index: -1;
-}
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
 
-.container {
-  max-width: 820px;
-  margin: auto;
-  padding: 140px 24px 90px;
-  text-align: center;
-}
+    .background-brand {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 10vw;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      color: rgba(255, 255, 255, 0.035);
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+      z-index: 1;
+    }
 
-/* LOGOTIPO TIPOGRÁFICO */
-h1 {
-  font-size: 3.2rem;
-  font-weight: 800;
-  letter-spacing: 7px;
-  background: linear-gradient(90deg, #93c5fd, #3b82f6, #1e3a8a);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 28px rgba(59,130,246,0.35);
-}
+    .container {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      margin: auto;
+      padding: 120px 24px 80px;
+    }
 
-.tagline {
-  margin-top: 22px;
-  font-size: 0.75rem;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: #9ca3af;
-}
+    section {
+      margin-bottom: 60px;
+    }
 
-.divider {
-  width: 60px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, #3b82f6, transparent);
-  margin: 70px auto;
-}
+    .headline {
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: #cfd8ff;
+      margin-bottom: 16px;
+    }
 
-/* TEXTO ENIGMÁTICO */
-.profile {
-  max-width: 620px;
-  margin: auto;
-  font-size: 1rem;
-  line-height: 2.1;
-  color: #d1d5db;
-}
+    .pillars {
+      display: flex;
+      gap: 24px;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      color: #9fb2ff;
+      text-transform: uppercase;
+    }
 
-.profile strong {
-  color: #e5e7eb;
-  font-weight: 600;
-}
+    .text {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: #b8c0d9;
+      max-width: 720px;
+    }
 
-.profile span {
-  color: #93c5fd;
-  font-weight: 500;
-}
+    .network {
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: #e6ecff;
+    }
 
-/* CONTATO SILENCIOSO */
-.contact {
-  margin-top: 100px;
-  padding-top: 40px;
-  border-top: 1px solid rgba(255,255,255,0.08);
-  font-size: 0.9rem;
-  color: #cbd5f5;
-}
+    .network span {
+      display: block;
+      margin-top: 6px;
+      font-size: 0.95rem;
+      color: #9fb2ff;
+    }
 
-footer {
-  margin-top: 60px;
-  font-size: 0.7rem;
-  color: #64748b;
-  letter-spacing: 1px;
-}
+    footer {
+      margin-top: 120px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.6;
+    }
 
+    .footer-block {
+      margin-bottom: 14px;
+    }
+
+    a {
+      color: #9fb2ff;
+      text-decoration: none;
+    }
   </style>
 </head>
+
 <body>
-  <div class="bg"></div>
-  <div class="noise"></div>  <div class="container">
-    <h1>PIXEL POLÍTICO</h1>
-    <div class="tagline">Estratégia Política de Bastidor</div><div class="divider"></div>
 
-<!-- WATERMARK -->
-<div style="position:fixed; inset:0; display:flex; align-items:center; justify-content:center; font-size:10vw; font-weight:800; letter-spacing:18px; color:rgba(148,163,184,0.035); pointer-events:none; text-transform:uppercase;">PIXEL POLÍTICO</div>
+<canvas id="particles"></canvas>
 
-<div class="divider"></div>
+<div class="background-brand">PIXEL&nbsp;POLÍTICO</div>
 
-<div class="profile">
-  <p>
-    <strong>Pixel Político</strong> é uma estrutura dedicada à
-    <strong>estratégia política de bastidor</strong>.
-  </p>
+<div class="container">
 
-  <p style="margin-top:34px;">
-    Atuamos onde decisões são preparadas antes de se tornarem públicas,
-    onde posicionamentos são construídos com método,
-    e onde a influência é organizada com antecedência.
-  </p>
+  <section>
+    <div class="headline">Estratégia antes da exposição.</div>
+    <div class="pillars">
+      <div>Estratégia</div>
+      <div>Articulação</div>
+      <div>Bastidor</div>
+    </div>
+  </section>
 
-  <p style="margin-top:34px;">
-    Nosso foco não é discurso.
-    É <strong>leitura de cenário</strong>,
-    <strong>arquitetura de poder</strong>
-    e <strong>direção estratégica</strong>.
-  </p>
+  <section>
+    <div class="text">
+      Integração entre inteligência política, tecnologia e articulação estratégica.
+      <br><br>
+      Atuação baseada em leitura de cenário, correlação de forças e antecipação de movimentos.
+    </div>
+  </section>
 
-  <p style="margin-top:34px;">
-    Estratégia não se expõe.
-    <strong>Ela estrutura.</strong>
-  </p>
-</div>
+  <section>
+    <div class="network">
+      Conexões não são exibidas.
+      <span>São acionadas.</span>
+    </div>
+  </section>
 
-<div class="contact">
-  <div style="font-weight:600; letter-spacing:1px;">Contato estratégico</div>
-  <div style="margin-top:10px;">WhatsApp • (14) 99747-0123</div>
-  <div style="margin-top:6px;">CEO • Pedro Conte Neto</div>
+  <section>
+    <div class="text">
+      Operação política de bastidor.<br>
+      Discreta. Técnica. Antecipada.
+    </div>
+  </section>
 
-  <div style="margin-top:26px; padding-top:18px; border-top:1px dashed rgba(148,163,184,0.25);">
-    <div style="font-size:0.75rem; letter-spacing:2px; color:rgba(203,213,225,0.55); text-transform:uppercase;">Selo técnico • institucional</div>
-    <div style="margin-top:10px; font-size:0.78rem; line-height:1.9; color:rgba(203,213,225,0.45);">
-      Tecnologia da Informação · Analista e Desenvolvedor de Sistemas · Analista de Banco de Dados<br>
-      Curso Superior em Tecnologia da Informação · Mestrado em Ciências Políticas<br>
+  <footer>
+    <div class="footer-block">
+      Contato Estratégico — WhatsApp<br>
+      <a href="https://wa.me/5514997470123" target="_blank">
+        +55 14 99747-0123
+      </a>
+    </div>
+
+    <div class="footer-block">
+      CEO — Pedro Conte Neto
+    </div>
+
+    <div class="footer-block">
+      Tecnologia da Informação<br>
+      Análise e Desenvolvimento de Sistemas<br>
+      Análise de Banco de Dados
+    </div>
+
+    <div class="footer-block">
+      Mestrado em Ciências Políticas
+    </div>
+
+    <div class="footer-block">
       Articulador político consolidado
     </div>
-  </div>
+  </footer>
+
 </div>
 
-<footer>
-  Inteligência digital aplicada à política
-</footer>
+<script>
+  const canvas = document.getElementById("particles");
+  const ctx = canvas.getContext("2d");
 
-  </div>
+  let width, height;
+  let particles = [];
+
+  function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  }
+
+  window.addEventListener("resize", resize);
+  resize();
+
+  const PARTICLE_COUNT = 70;
+  const DISTANCE = 120;
+
+  for (let i = 0; i < PARTICLE_COUNT; i++) {
+    particles.push({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      vx: (Math.random() - 0.5) * 0.3,
+      vy: (Math.random() - 0.5) * 0.3
+    });
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, width, height);
+
+    for (let i = 0; i < particles.length; i++) {
+      const p = particles[i];
+
+      p.x += p.vx;
+      p.y += p.vy;
+
+      if (p.x < 0 || p.x > width) p.vx *= -1;
+      if (p.y < 0 || p.y > height) p.vy *= -1;
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, 1.2, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(159,178,255,0.6)";
+      ctx.fill();
+
+      for (let j = i + 1; j < particles.length; j++) {
+        const p2 = particles[j];
+        const dx = p.x - p2.x;
+        const dy = p.y - p2.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < DISTANCE) {
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.strokeStyle = "rgba(159,178,255," + (1 - dist / DISTANCE) * 0.25 + ")";
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+
+    requestAnimationFrame(draw);
+  }
+
+  draw();
+</script>
+
 </body>
 </html>
