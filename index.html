@@ -5,149 +5,139 @@
   <title>Pixel Político</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-    body {
-      background: radial-gradient(circle at top, #0b1320, #000000 70%);
-      color: #e5e7eb;
-      overflow-x: hidden;
-    }
-    .bg-animate {
-      position: fixed;
-      inset: 0;
-      background: linear-gradient(120deg, rgba(0,60,120,0.15), rgba(0,0,0,0));
-      animation: moveBg 20s ease-in-out infinite alternate;
-      z-index: -1;
-    }
-    @keyframes moveBg {
-      from { transform: translateX(-5%) translateY(-5%); }
-      to { transform: translateX(5%) translateY(5%); }
-    }
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 100px 24px;
-    }
-    header {
-      text-align: center;
-      margin-bottom: 120px;
-    }
-    header h1 {
-      font-size: 3.2rem;
-      font-weight: 800;
-      letter-spacing: 4px;
-    }
-    header h1 span { color: #3b82f6; }
-    header p {
-      margin-top: 20px;
-      color: #9ca3af;
-      font-size: 1.1rem;
-      letter-spacing: 1px;
-    }
-    section {
-      margin-bottom: 120px;
-      position: relative;
-    }
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 24px;
-      font-weight: 600;
-    }
-    p {
-      max-width: 800px;
-      line-height: 1.8;
-      color: #d1d5db;
-    }
-    .highlight {
-      color: #3b82f6;
-      font-weight: 600;
-    }
-    .floating-text {
-      position: absolute;
-      top: -40px;
-      right: 0;
-      font-size: 0.8rem;
-      letter-spacing: 3px;
-      color: rgba(255,255,255,0.08);
-      animation: float 6s ease-in-out infinite;
-    }
-    @keyframes float {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-      100% { transform: translateY(0); }
-    }
-    .contact {
-      border-top: 1px solid rgba(255,255,255,0.1);
-      padding-top: 60px;
-    }
-    .contact-box {
-      margin-top: 30px;
-      padding: 30px;
-      background: rgba(15,23,42,0.6);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 12px;
-      backdrop-filter: blur(6px);
-    }
-    .contact-box p {
-      margin-bottom: 12px;
-      font-size: 1.05rem;
-    }
-    footer {
-      text-align: center;
-      padding: 40px 0 20px;
-      font-size: 0.8rem;
-      color: #6b7280;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }body {
+  background: #020617;
+  color: #e5e7eb;
+  overflow-x: hidden;
+}
+
+/* FUNDO DINÂMICO */
+.bg {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(59,130,246,0.15), transparent 40%),
+    radial-gradient(circle at 80% 60%, rgba(14,165,233,0.12), transparent 45%),
+    linear-gradient(120deg, #020617, #000000);
+  animation: bgMove 30s ease-in-out infinite alternate;
+  z-index: -2;
+}
+
+@keyframes bgMove {
+  from { filter: hue-rotate(0deg); }
+  to { filter: hue-rotate(25deg); }
+}
+
+/* RUÍDO SUTIL */
+.noise {
+  position: fixed;
+  inset: 0;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4"/></filter><rect width="120" height="120" filter="url(%23n)" opacity="0.03"/></svg>');
+  pointer-events: none;
+  z-index: -1;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 120px 24px 80px;
+  text-align: center;
+}
+
+/* TÍTULO COM GRADIENTE E BRILHO */
+h1 {
+  font-size: 3.4rem;
+  font-weight: 800;
+  letter-spacing: 6px;
+  background: linear-gradient(90deg, #60a5fa, #22d3ee, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 25px rgba(59,130,246,0.35);
+}
+
+.subtitle {
+  margin-top: 18px;
+  font-size: 0.95rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #9ca3af;
+}
+
+.divider {
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+  margin: 60px auto;
+}
+
+/* TEXTO ESTRATÉGICO MINIMALISTA */
+.manifesto {
+  font-size: 1.05rem;
+  line-height: 2;
+  color: #d1d5db;
+  max-width: 680px;
+  margin: auto;
+}
+
+.manifesto strong {
+  color: #e5e7eb;
+  font-weight: 600;
+}
+
+/* CONTATO */
+.contact {
+  margin-top: 90px;
+  padding: 40px 20px;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  backdrop-filter: blur(10px);
+  background: rgba(2,6,23,0.6);
+}
+
+.contact p {
+  margin: 10px 0;
+  font-size: 0.95rem;
+  color: #cbd5f5;
+}
+
+footer {
+  margin-top: 70px;
+  font-size: 0.75rem;
+  color: #64748b;
+  letter-spacing: 1px;
+}
+
   </style>
 </head>
 <body>
-  <div class="bg-animate"></div>  <div class="container">
-    <header>
-      <h1><span>PIXEL</span> POLÍTICO</h1>
-      <p>Análise. Posicionamento. Resultado.</p>
-    </header><section>
-  <div class="floating-text">ESTRATÉGIA • ARTICULAÇÃO • INFLUÊNCIA</div>
-  <h2>O que é a Pixel Político</h2>
-  <p>
-    A <span class="highlight">Pixel Político</span> é uma empresa de estratégia política e inteligência digital.
-    Atuamos na construção de posicionamento, leitura de cenário, articulação política e influência no ambiente digital.
-    Nosso trabalho não é visível — ele é <span class="highlight">efetivo</span>.
-  </p>
-</section>
+  <div class="bg"></div>
+  <div class="noise"></div>  <div class="container">
+    <h1>PIXEL POLÍTICO</h1>
+    <div class="subtitle">Estratégia • Articulação • Influência</div><div class="divider"></div>
 
-<section>
-  <div class="floating-text">BASTIDOR • MÉTODO • PRECISÃO</div>
-  <h2>Como atuamos</h2>
+<div class="manifesto">
   <p>
-    Trabalhamos com análise profunda de contexto, comportamento do eleitorado e arquitetura de bastidor.
-    Cada movimento é calculado. Cada mensagem tem função. Cada ação gera capital político.
-    Estratégia antes do discurso. Posicionamento antes da exposição.
+    Estratégia política não é discurso.<br>
+    <strong>É leitura de cenário, tempo e poder.</strong>
   </p>
-</section>
-
-<section>
-  <div class="floating-text">AUTORIDADE • EXPERIÊNCIA • CONFIANÇA</div>
-  <h2>Quem está por trás</h2>
-  <p>
-    Pedro Conte Neto é estrategista e articulador político, com sólida formação em tecnologia e análise de dados.
-    Formado em <span class="highlight">Análise e Desenvolvimento de Sistemas</span>, com atuação como analista de sistemas e banco de dados.
-    Aprovado em concursos públicos de nível municipal e estadual, reúne visão técnica, institucional e política.
-    Atua na construção de influência, posicionamento estratégico e articulação política no ambiente digital.
+  <p style="margin-top:30px;">
+    A Pixel Político atua no bastidor, onde decisões são estruturadas,
+    posicionamentos são calculados e a influência é construída antes de ser percebida.
   </p>
-</section>
+  <p style="margin-top:30px;">
+    Não operamos volume.<br>
+    <strong>Operamos direção.</strong>
+  </p>
+</div>
 
-<section class="contact">
-  <h2>Contato estratégico</h2>
-  <div class="contact-box">
-    <p><strong>Telefone / WhatsApp:</strong> (14) 99747-0123</p>
-    <p><strong>Responsável:</strong> Pedro Conte Neto</p>
-    <p style="margin-top:16px; color:#9ca3af; font-size:0.95rem;">
-      Contato direto. Conversas objetivas. Estratégia sob demanda.
-    </p>
-  </div>
-</section>
+<div class="contact">
+  <p><strong>Contato estratégico</strong></p>
+  <p>WhatsApp • (14) 99747-0123</p>
+  <p>Pedro Conte Neto</p>
+</div>
 
 <footer>
-  © Pixel Político — Inteligência digital aplicada à política.
+  Inteligência digital aplicada à política
 </footer>
 
   </div>
