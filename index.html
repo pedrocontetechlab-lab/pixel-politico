@@ -2,7 +2,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pixel Político</title>
+  <title>Pixel Político — Black Label</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }body {
@@ -11,98 +11,96 @@
   overflow-x: hidden;
 }
 
-/* FUNDO DINÂMICO */
+/* FUNDO BLACK LABEL */
 .bg {
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(circle at 20% 20%, rgba(59,130,246,0.15), transparent 40%),
-    radial-gradient(circle at 80% 60%, rgba(14,165,233,0.12), transparent 45%),
-    linear-gradient(120deg, #020617, #000000);
-  animation: bgMove 30s ease-in-out infinite alternate;
+    radial-gradient(circle at 15% 20%, rgba(59,130,246,0.12), transparent 45%),
+    radial-gradient(circle at 85% 70%, rgba(30,64,175,0.15), transparent 50%),
+    linear-gradient(180deg, #020617, #000000 70%);
+  animation: bgPulse 40s ease-in-out infinite alternate;
   z-index: -2;
 }
 
-@keyframes bgMove {
-  from { filter: hue-rotate(0deg); }
-  to { filter: hue-rotate(25deg); }
+@keyframes bgPulse {
+  from { filter: brightness(1) hue-rotate(0deg); }
+  to { filter: brightness(1.05) hue-rotate(18deg); }
 }
 
-/* RUÍDO SUTIL */
+/* GRÃO CINEMATOGRÁFICO */
 .noise {
   position: fixed;
   inset: 0;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4"/></filter><rect width="120" height="120" filter="url(%23n)" opacity="0.03"/></svg>');
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4"/></filter><rect width="120" height="120" filter="url(%23n)" opacity="0.035"/></svg>');
   pointer-events: none;
   z-index: -1;
 }
 
 .container {
-  max-width: 900px;
+  max-width: 820px;
   margin: auto;
-  padding: 120px 24px 80px;
+  padding: 140px 24px 90px;
   text-align: center;
 }
 
-/* TÍTULO COM GRADIENTE E BRILHO */
+/* LOGOTIPO TIPOGRÁFICO */
 h1 {
-  font-size: 3.4rem;
+  font-size: 3.2rem;
   font-weight: 800;
-  letter-spacing: 6px;
-  background: linear-gradient(90deg, #60a5fa, #22d3ee, #3b82f6);
+  letter-spacing: 7px;
+  background: linear-gradient(90deg, #93c5fd, #3b82f6, #1e3a8a);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 25px rgba(59,130,246,0.35);
+  text-shadow: 0 0 28px rgba(59,130,246,0.35);
 }
 
-.subtitle {
-  margin-top: 18px;
-  font-size: 0.95rem;
-  letter-spacing: 3px;
+.tagline {
+  margin-top: 22px;
+  font-size: 0.75rem;
+  letter-spacing: 4px;
   text-transform: uppercase;
   color: #9ca3af;
 }
 
 .divider {
-  width: 80px;
+  width: 60px;
   height: 1px;
   background: linear-gradient(90deg, transparent, #3b82f6, transparent);
-  margin: 60px auto;
+  margin: 70px auto;
 }
 
-/* TEXTO ESTRATÉGICO MINIMALISTA */
-.manifesto {
-  font-size: 1.05rem;
-  line-height: 2;
-  color: #d1d5db;
-  max-width: 680px;
+/* TEXTO ENIGMÁTICO */
+.profile {
+  max-width: 620px;
   margin: auto;
+  font-size: 1rem;
+  line-height: 2.1;
+  color: #d1d5db;
 }
 
-.manifesto strong {
+.profile strong {
   color: #e5e7eb;
   font-weight: 600;
 }
 
-/* CONTATO */
-.contact {
-  margin-top: 90px;
-  padding: 40px 20px;
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 14px;
-  backdrop-filter: blur(10px);
-  background: rgba(2,6,23,0.6);
+.profile span {
+  color: #93c5fd;
+  font-weight: 500;
 }
 
-.contact p {
-  margin: 10px 0;
-  font-size: 0.95rem;
+/* CONTATO SILENCIOSO */
+.contact {
+  margin-top: 100px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  font-size: 0.9rem;
   color: #cbd5f5;
 }
 
 footer {
-  margin-top: 70px;
-  font-size: 0.75rem;
+  margin-top: 60px;
+  font-size: 0.7rem;
   color: #64748b;
   letter-spacing: 1px;
 }
@@ -113,27 +111,49 @@ footer {
   <div class="bg"></div>
   <div class="noise"></div>  <div class="container">
     <h1>PIXEL POLÍTICO</h1>
-    <div class="subtitle">Estratégia • Articulação • Influência</div><div class="divider"></div>
+    <div class="tagline">Black Label • Bastidor Estratégico</div><div class="divider"></div>
 
-<div class="manifesto">
+<div class="profile">
   <p>
-    Estratégia política não é discurso.<br>
-    <strong>É leitura de cenário, tempo e poder.</strong>
+    <strong>Pixel Político</strong> opera no bastidor.
+    Estratégia, articulação e influência estruturadas com frieza e método.
   </p>
-  <p style="margin-top:30px;">
-    A Pixel Político atua no bastidor, onde decisões são estruturadas,
-    posicionamentos são calculados e a influência é construída antes de ser percebida.
+
+  <p style="margin-top:34px;">
+    <strong>CEO • Articulador Político</strong><br>
+    Pedro Conte Neto
   </p>
-  <p style="margin-top:30px;">
-    Não operamos volume.<br>
-    <strong>Operamos direção.</strong>
+
+  <p style="margin-top:34px;">
+    Formação em <span>Tecnologia da Informação</span>,
+    com atuação como analista e desenvolvedor de sistemas
+    e analista de banco de dados.
+  </p>
+
+  <p style="margin-top:34px;">
+    <strong>Mestrado em Ciências Políticas.</strong>
+    Leitura de poder, ambiente institucional e construção de influência.
+  </p>
+
+  <p style="margin-top:34px;">
+    Estratégia não se anuncia.<br>
+    <strong>Ela opera.</strong>
   </p>
 </div>
 
 <div class="contact">
-  <p><strong>Contato estratégico</strong></p>
-  <p>WhatsApp • (14) 99747-0123</p>
-  <p>Pedro Conte Neto</p>
+  <div style="font-weight:600; letter-spacing:1px;">Contato estratégico</div>
+  <div style="margin-top:10px;">WhatsApp • (14) 99747-0123</div>
+  <div style="margin-top:6px;">CEO • Pedro Conte Neto</div>
+
+  <div style="margin-top:26px; padding-top:18px; border-top:1px dashed rgba(148,163,184,0.25);">
+    <div style="font-size:0.75rem; letter-spacing:2px; color:rgba(203,213,225,0.55); text-transform:uppercase;">Selo técnico • institucional</div>
+    <div style="margin-top:10px; font-size:0.78rem; line-height:1.9; color:rgba(203,213,225,0.45);">
+      Tecnologia da Informação · Analista e Desenvolvedor de Sistemas · Analista de Banco de Dados<br>
+      Curso Superior em Tecnologia da Informação · Mestrado em Ciências Políticas<br>
+      Articulador político consolidado
+    </div>
+  </div>
 </div>
 
 <footer>
@@ -143,3 +163,4 @@ footer {
   </div>
 </body>
 </html>
+
