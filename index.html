@@ -22,26 +22,19 @@
       overflow-x: hidden;
     }
 
-    canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 0;
-    }
-
     .background-brand {
       position: fixed;
-      top: 50%;
+      top: 55%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-size: 10vw;
+      font-size: 9vw;
       font-weight: 600;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.25em;
       color: rgba(255, 255, 255, 0.035);
       white-space: nowrap;
       pointer-events: none;
       user-select: none;
-      z-index: 1;
+      z-index: 0;
     }
 
     .container {
@@ -49,7 +42,19 @@
       z-index: 2;
       max-width: 900px;
       margin: auto;
-      padding: 120px 24px 80px;
+      padding: 90px 24px 80px;
+    }
+
+    header {
+      margin-bottom: 80px;
+    }
+
+    .brand-top {
+      font-size: 0.85rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #9fb2ff;
+      opacity: 0.85;
     }
 
     section {
@@ -57,7 +62,7 @@
     }
 
     .headline {
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       font-weight: 500;
       color: #cfd8ff;
       margin-bottom: 16px;
@@ -66,8 +71,8 @@
     .pillars {
       display: flex;
       gap: 24px;
-      font-size: 0.85rem;
-      letter-spacing: 0.08em;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
       color: #9fb2ff;
       text-transform: uppercase;
     }
@@ -80,7 +85,7 @@
     }
 
     .network {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 500;
       color: #e6ecff;
     }
@@ -114,138 +119,79 @@
 
 <body>
 
-<canvas id="particles"></canvas>
+  <div class="background-brand">PIXEL&nbsp;POLÍTICO</div>
 
-<div class="background-brand">PIXEL&nbsp;POLÍTICO</div>
+  <div class="container">
 
-<div class="container">
+    <!-- TOPO -->
+    <header>
+      <div class="brand-top">Pixel Político</div>
+    </header>
 
-  <section>
-    <div class="headline">Estratégia antes da exposição.</div>
-    <div class="pillars">
-      <div>Estratégia</div>
-      <div>Articulação</div>
-      <div>Bastidor</div>
-    </div>
-  </section>
+    <!-- Estratégia -->
+    <section>
+      <div class="headline">Estratégia antes da exposição.</div>
+      <div class="pillars">
+        <div>Estratégia</div>
+        <div>Articulação</div>
+        <div>Bastidor</div>
+      </div>
+    </section>
 
-  <section>
-    <div class="text">
-      Integração entre inteligência política, tecnologia e articulação estratégica.
-      <br><br>
-      Atuação baseada em leitura de cenário, correlação de forças e antecipação de movimentos.
-    </div>
-  </section>
+    <!-- Método -->
+    <section>
+      <div class="text">
+        Integração entre inteligência política, tecnologia e articulação estratégica.
+        <br><br>
+        Atuação baseada em leitura de cenário, correlação de forças e antecipação de movimentos.
+      </div>
+    </section>
 
-  <section>
-    <div class="network">
-      Conexões não são exibidas.
-      <span>São acionadas.</span>
-    </div>
-  </section>
+    <!-- Network -->
+    <section>
+      <div class="network">
+        Conexões não são exibidas.
+        <span>São acionadas.</span>
+      </div>
+    </section>
 
-  <section>
-    <div class="text">
-      Operação política de bastidor.<br>
-      Discreta. Técnica. Antecipada.
-    </div>
-  </section>
+    <!-- Bastidor -->
+    <section>
+      <div class="text">
+        Operação política de bastidor.<br>
+        Discreta. Técnica. Antecipada.
+      </div>
+    </section>
 
-  <footer>
-    <div class="footer-block">
-      Contato Estratégico — WhatsApp<br>
-      <a href="https://wa.me/5514997470123" target="_blank">
-        +55 14 99747-0123
-      </a>
-    </div>
+    <!-- Rodapé -->
+    <footer>
+      <div class="footer-block">
+        Contato Estratégico — WhatsApp<br>
+        <a href="https://wa.me/5514997470123" target="_blank">
+          +55 14 99747-0123
+        </a>
+      </div>
 
-    <div class="footer-block">
-      CEO — Pedro Conte Neto
-    </div>
+      <div class="footer-block">
+        CEO — Pedro Conte Neto
+      </div>
 
-    <div class="footer-block">
-      Tecnologia da Informação<br>
-      Análise e Desenvolvimento de Sistemas<br>
-      Análise de Banco de Dados
-    </div>
+      <div class="footer-block">
+        Tecnologia da Informação<br>
+        Análise e Desenvolvimento de Sistemas<br>
+        Análise de Banco de Dados
+      </div>
 
-    <div class="footer-block">
-      Mestrado em Ciências Políticas
-    </div>
+      <div class="footer-block">
+        Mestrado em Ciências Políticas
+      </div>
 
-    <div class="footer-block">
-      Articulador político consolidado
-    </div>
-  </footer>
+      <div class="footer-block">
+        Articulador político consolidado
+      </div>
+    </footer>
 
-</div>
-
-<script>
-  const canvas = document.getElementById("particles");
-  const ctx = canvas.getContext("2d");
-
-  let width, height;
-  let particles = [];
-
-  function resize() {
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
-  }
-
-  window.addEventListener("resize", resize);
-  resize();
-
-  const PARTICLE_COUNT = 70;
-  const DISTANCE = 120;
-
-  for (let i = 0; i < PARTICLE_COUNT; i++) {
-    particles.push({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      vx: (Math.random() - 0.5) * 0.3,
-      vy: (Math.random() - 0.5) * 0.3
-    });
-  }
-
-  function draw() {
-    ctx.clearRect(0, 0, width, height);
-
-    for (let i = 0; i < particles.length; i++) {
-      const p = particles[i];
-
-      p.x += p.vx;
-      p.y += p.vy;
-
-      if (p.x < 0 || p.x > width) p.vx *= -1;
-      if (p.y < 0 || p.y > height) p.vy *= -1;
-
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, 1.2, 0, Math.PI * 2);
-      ctx.fillStyle = "rgba(159,178,255,0.6)";
-      ctx.fill();
-
-      for (let j = i + 1; j < particles.length; j++) {
-        const p2 = particles[j];
-        const dx = p.x - p2.x;
-        const dy = p.y - p2.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-
-        if (dist < DISTANCE) {
-          ctx.beginPath();
-          ctx.moveTo(p.x, p.y);
-          ctx.lineTo(p2.x, p2.y);
-          ctx.strokeStyle = "rgba(159,178,255," + (1 - dist / DISTANCE) * 0.25 + ")";
-          ctx.lineWidth = 0.5;
-          ctx.stroke();
-        }
-      }
-    }
-
-    requestAnimationFrame(draw);
-  }
-
-  draw();
-</script>
+  </div>
 
 </body>
 </html>
